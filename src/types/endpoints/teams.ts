@@ -1,4 +1,10 @@
-import { Award, Media, Team, Team_Robot, Team_Simple } from "../schemas/teams.js";
+import {
+  Award,
+  Media,
+  Team,
+  Team_Robot,
+  Team_Simple,
+} from "../schemas/teams.js";
 import { Endpoints } from "../index.js";
 import { Event, Event_Simple, Team_Event_Status } from "../schemas/events.js";
 import { District_List } from "../schemas/districts.js";
@@ -95,10 +101,12 @@ export const teamEndpoints = {
         schema.every((v) => v && typeof v === "object")
       ) {
         for (const member of schema) {
-          member["score_breakdown"]["yearOfCompetition"] = parseInt(eventKey.slice(0, 4));
+          member["score_breakdown"]["yearOfCompetition"] = parseInt(
+            eventKey.slice(0, 4),
+          );
         }
       }
-			return schema;
+      return schema;
     },
   },
   "/team/{team_key}/event/{event_key}/matches/simple": {
@@ -135,10 +143,10 @@ export const teamEndpoints = {
         schema.every((v) => v && typeof v === "object")
       ) {
         for (const member of schema) {
-          member["score_breakdown"]["yearOfCompetition"] = year
+          member["score_breakdown"]["yearOfCompetition"] = year;
         }
       }
-			return schema;
+      return schema;
     },
   },
   "/team/{team_key}/matches/{year}/simple": {

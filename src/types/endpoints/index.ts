@@ -9,34 +9,41 @@ import type { Endpoints } from "../index.js";
 import { type } from "arktype";
 
 const Search_Index = type({
-	teams: type({
-		key: "string",
-		nickname: "string",
-	}).array(),
+  teams: type({
+    key: "string",
+    nickname: "string",
+  }).array(),
 
-	events: type({
-		key: "string",
-		name: "string",
-	}).array(),
+  events: type({
+    key: "string",
+    name: "string",
+  }).array(),
 });
 
 export const searchIndex = {
-	"/search_index": {
-		schema: Search_Index,
-		arguments: type([]),
-	},
+  "/search_index": {
+    schema: Search_Index,
+    arguments: type([]),
+  },
 } satisfies Endpoints;
 
-export const endpoints: typeof statusEndpoints & typeof teamEndpoints & typeof eventEndpoints & typeof matchEndpoints & typeof districtEndpoints & typeof regionalAdvancementEndpoints & typeof insightEndpoints & typeof searchIndex = {
-	...statusEndpoints,
-	...teamEndpoints,
-	...eventEndpoints,
-	...matchEndpoints,
-	...districtEndpoints,
-	...regionalAdvancementEndpoints,
-	...insightEndpoints,
-	...searchIndex,
+export const endpoints: typeof statusEndpoints &
+  typeof teamEndpoints &
+  typeof eventEndpoints &
+  typeof matchEndpoints &
+  typeof districtEndpoints &
+  typeof regionalAdvancementEndpoints &
+  typeof insightEndpoints &
+  typeof searchIndex = {
+  ...statusEndpoints,
+  ...teamEndpoints,
+  ...eventEndpoints,
+  ...matchEndpoints,
+  ...districtEndpoints,
+  ...regionalAdvancementEndpoints,
+  ...insightEndpoints,
+  ...searchIndex,
 } satisfies Endpoints;
 
 export type TBAEndpoints = typeof endpoints;
-export type TBAEndpoint = keyof typeof endpoints
+export type TBAEndpoint = keyof typeof endpoints;

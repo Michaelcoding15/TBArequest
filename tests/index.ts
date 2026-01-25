@@ -8,7 +8,8 @@ const api_key = env.parsed?.API_KEY!;
 
 export const TBA = createTBACaller(api_key);
 
-export const getKeys = <T extends {}>(obj: T) => Object.keys(obj) as Array<keyof T>;
+export const getKeys = <T extends {}>(obj: T) =>
+  Object.keys(obj) as Array<keyof T>;
 
 export const YEAR_NUM = 2025;
 export const PAGE_NUM = 0;

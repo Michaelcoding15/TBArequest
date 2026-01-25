@@ -1,49 +1,55 @@
 import { Endpoints } from "../index.js";
-import { Elimination_Alliance, Event, Event_Simple, Team_Event_Status, WLT_Record } from "../schemas/events.js";
+import {
+  Elimination_Alliance,
+  Event,
+  Event_Simple,
+  Team_Event_Status,
+  WLT_Record,
+} from "../schemas/events.js";
 import { Award, Media, Team, Team_Simple } from "../schemas/teams.js";
 import { Match, Match_Simple } from "../schemas/matches.js";
 import { type } from "arktype";
 
 const rankings = type({
-	rankings: type({
-		matches_played: "number",
-		qual_average: "number | null",
-		extra_stats: "number[]",
-		sort_orders: "number[] | null",
-		record: type(WLT_Record, "|", "null"),
-		rank: "number",
-		dq: "number",
-		team_key: "string",
-	}).array(),
+  rankings: type({
+    matches_played: "number",
+    qual_average: "number | null",
+    extra_stats: "number[]",
+    sort_orders: "number[] | null",
+    record: type(WLT_Record, "|", "null"),
+    rank: "number",
+    dq: "number",
+    team_key: "string",
+  }).array(),
 
-	extra_stats_info: type({
-		precision: "number",
-		name: "string",
-	}).array(),
+  extra_stats_info: type({
+    precision: "number",
+    name: "string",
+  }).array(),
 
-	sort_order_info: type({
-		precision: "number",
-		name: "string",
-	}).array(),
+  sort_order_info: type({
+    precision: "number",
+    name: "string",
+  }).array(),
 });
 
 const eventPoints = type({
-	points: type({
-		"[string]": type({
-			total: "number",
-			alliance_points: "number",
-			elim_points: "number",
-			award_points: "number",
-			qual_points: "number",
-		}),
-	}),
+  points: type({
+    "[string]": type({
+      total: "number",
+      alliance_points: "number",
+      elim_points: "number",
+      award_points: "number",
+      qual_points: "number",
+    }),
+  }),
 
-	"tiebreakers?": type({
-		"[string]": type({
-			highest_qual_scores: "number[]",
-			qual_points: "number",
-		}).partial(),
-	}),
+  "tiebreakers?": type({
+    "[string]": type({
+      highest_qual_scores: "number[]",
+      qual_points: "number",
+    }).partial(),
+  }),
 });
 
 export const eventEndpoints = {
@@ -141,10 +147,12 @@ export const eventEndpoints = {
         schema.every((v) => v && typeof v === "object")
       ) {
         for (const member of schema) {
-          member["score_breakdown"]["yearOfCompetition"] = parseInt(key.slice(0, 4));
+          member["score_breakdown"]["yearOfCompetition"] = parseInt(
+            key.slice(0, 4),
+          );
         }
       }
-			return schema;
+      return schema;
     },
   },
   "/event/{event_key}/matches/simple": {
