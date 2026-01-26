@@ -28,6 +28,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: pnpm install -P
       - run: pnpm build
 
   publish-npm:
