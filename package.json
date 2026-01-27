@@ -1,13 +1,13 @@
 {
   "name": "tbarequest",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A wrapper to fetch data from The Blue Alliance API",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest --bail 1",
-    "build": "tsc"
+    "build": "tsup"
   },
   "repository": "https://github.com/Michaelcoding15/TBArequest",
   "files": [
@@ -25,7 +25,10 @@
     "arktype": "^2.1.20"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.55.2",
     "dotenv": "^16.5.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
     "vitest": "^3.1.4"
   }
 }
