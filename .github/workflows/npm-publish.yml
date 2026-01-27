@@ -30,6 +30,6 @@ jobs:
           node-version: 20
       - run: pnpm install -P
       - run: pnpm build
-      - run: pnpm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
