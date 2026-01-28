@@ -1,10 +1,10 @@
 {
   "name": "tbarequest",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A wrapper to fetch data from The Blue Alliance API",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "scripts": {
     "test": "vitest --bail 1",
     "build": "tsdown && node ./scripts/fix-dts.ts"
