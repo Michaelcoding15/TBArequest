@@ -1,6 +1,6 @@
 {
   "name": "tbarequest",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A wrapper to fetch data from The Blue Alliance API",
   "type": "module",
   "main": "dist/index.js",
