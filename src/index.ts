@@ -1,10 +1,13 @@
-import { Result, tryCatch } from "./utils.js";
+import { ArkErrors } from "arktype";
 import {
   endpoints,
   TBAEndpoint,
   TBAEndpoints,
 } from "./types/endpoints/index.js";
-import { ArkErrors } from "arktype";
+import { notification } from "./types/webhooks.js";
+import { Result, tryCatch } from "./utils.js";
+
+export { notification };
 
 /*
  * Creates a function that can call the TBA api.

@@ -591,17 +591,20 @@ export const Match_Simple = type({
   predicted_time: "number | null",
 });
 
+// avoid typing errors (ts 2589)
+const scoreBreakdownYears = msb["2015"]
+  .or(msb["2016"])
+  .or(msb["2017"])
+  .or(msb["2018"])
+  .or(msb["2019"])
+  .or(msb["2020"])
+  .or(msb["2022"])
+  .or(msb["2023"])
+  .or(msb["2024"])
+  .or(msb["2025"])
+  .or(msb["2026"]);
+
 export const Match = Match_Simple.and({
   videos: type({ type: "string", key: "string" }).array(),
-  score_breakdown: msb["2015"]
-    .or(msb["2016"])
-    .or(msb["2017"])
-    .or(msb["2018"])
-    .or(msb["2019"])
-    .or(msb["2020"])
-    .or(msb["2022"])
-    .or(msb["2023"])
-    .or(msb["2024"])
-    .or(msb["2025"])
-    .or(msb["2026"]),
+  score_breakdown: type(scoreBreakdownYears, "|", "null"),
 });
